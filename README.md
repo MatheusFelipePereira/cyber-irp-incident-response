@@ -24,17 +24,51 @@ An application for **Information Security incident management** (IRP — Inciden
 
 ```mermaid
 flowchart LR
-    A[Power Automate<br/>PowerFX<br/>extract & transform] --> B[(Excel spreadsheets<br/>storage)]
-    B <--> C[Power Apps<br/>PowerFX interface]
-    B --> D[Power BI<br/>visualization]
+    A[Power Automate<br/>ETL] --> B[(SharePoint List<br/>operational base)]
+    B <--> C[Power Apps<br/>analyst interface]
+    C -->|closed incidents| E[(Excel<br/>history)]
+    E --> D[Power BI<br/>visualization]
 ```
 
 | Layer | Technology | Role |
 |---|---|---|
 | ⚙️ Extraction & transformation | **Power Automate** (PowerFX) | Captures and prepares incident data |
-| 🗄️ Storage | **Excel** spreadsheets | Incident database |
+| 🗄️ Storage | **SharePoint List** + **Excel** | Operational base + historical repository |
 | 📱 Interface | **Power Apps** (PowerFX) | Where the team registers and manages incidents |
 | 📊 Visualization | **Power BI** | Indicators — see [CyberSecurity Incidents Dashboard](https://github.com/MatheusFelipePereira/cybersecurity-incidents-dashboard) |
+
+## 🔄 Incident lifecycle
+
+1. **Power Automate** detects, extracts, transforms and loads (ETL) cybersecurity incidents into a **SharePoint List** — the operational base.
+2. Analysts open the **Power Apps** app to validate each incident and complete it after analysis and response (e.g. *false positive*, *spam*, *real incident*).
+3. The incident is **closed**, and consolidated data is stored in an **Excel** historical base.
+4. That base feeds **Power BI** — stage two of the project: the [CyberSecurity Incidents Dashboard](https://github.com/MatheusFelipePereira/cybersecurity-incidents-dashboard).
+
+## 🚀 Results
+
+| | |
+|---|---|
+| ⏱️ **100+ hours** | of analysts' manual work eliminated |
+| ⚡ **+30%** | team operational capacity for analysis, response and reporting to leadership |
+
+## 📸 App gallery
+
+<p align="center"><img src="img/01.png" width="320" /></p>
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="img/02.png" /><br/><sub><b>Welcome / loading screen</b></sub></td>
+    <td width="50%" align="center"><img src="img/03.png" /><br/><sub><b>App screen</b></sub></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="img/04.png" /><br/><sub><b>Register a new incident</b> in the queue</sub></td>
+    <td width="50%" align="center"><img src="img/05.png" /><br/><sub><b>App screen</b></sub></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="img/06.png" /><br/><sub><b>App screen</b></sub></td>
+    <td width="50%" align="center"><img src="cover.jpg" /><br/><sub><b>Power BI output</b></sub></td>
+  </tr>
+</table>
 
 ## 👥 Team
 
